@@ -31,9 +31,16 @@ var nbImg = slides.length
 
 var current_pic = 0;
 
+console.log(nbImg);
+
 arrow_left.onclick = function() {
-	current_pic--;
-	current_pic = ((current_pic % nbImg) + nbImg) % nbImg;
+	/*current_pic--;
+	current_pic = ((current_pic % nbImg) + nbImg) % nbImg;*/
+	if (current_pic == 0) {
+		current_pic = (nbImg - 1);
+	} else {
+		current_pic--;
+	}
 	
 	let placeholder = '';
 	for (i = 0; i < current_pic; i++) {
@@ -45,7 +52,7 @@ arrow_left.onclick = function() {
 		placeholder+= '<li class="dot"></li>';
 	
 	}
-	document.querySelector('#banner .banner-img').outerHTML = '<img class="banner-img" src="./assets/images/slideshow/' + slides[current_pic].image + '" alt="Banner Print-it"> \n';
+	document.querySelector('#banner .banner-img').outerHTML = '<img class="banner-img" src="./assets/images/slideshow/' + slides[current_pic].image + '" alt="Banner Print-it">';
 	document.querySelector('#banner p').outerHTML = '<p>' + slides[current_pic].tagLine + '</p>';
 	document.querySelector('#banner .dots').outerHTML = '<ul class="dots">\n '+ placeholder + '</ul>';
 	
@@ -53,8 +60,15 @@ arrow_left.onclick = function() {
 }
 
 arrow_right.onclick = function() {
-	current_pic++;
-	current_pic = current_pic % nbImg;
+	/*current_pic++;
+	current_pic = current_pic % nbImg;*/
+	if (current_pic == (nbImg - 1)) {
+		current_pic = 0;
+		console.log(current_pic);
+	} else {
+		current_pic++;
+		console.log(current_pic);
+	}
 	
 	let placeholder = '';
 	for (i = 0; i < current_pic; i++) {
@@ -66,7 +80,7 @@ arrow_right.onclick = function() {
 		placeholder+= '<li class="dot"></li>';
 	
 	}
-	document.querySelector('#banner .banner-img').outerHTML = '<img class="banner-img" src="./assets/images/slideshow/' + slides[current_pic].image + '" alt="Banner Print-it"> \n';
+	document.querySelector('#banner .banner-img').outerHTML = '<img class="banner-img" src="./assets/images/slideshow/' + slides[current_pic].image + '" alt="Banner Print-it">';
 	document.querySelector('#banner p').outerHTML = '<p>' + slides[current_pic].tagLine + '</p>';
 	document.querySelector('#banner .dots').outerHTML = '<ul class="dots">\n '+ placeholder + '</ul>';
 	
